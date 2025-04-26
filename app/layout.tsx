@@ -3,7 +3,7 @@ import "@/app/globals.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 
-import { ThemeProvider } from "@/components/theme-provider"
+import { RootLayoutClient } from "@/providers/root-layout-client"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -21,9 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <RootLayoutClient className={inter.className}>
           {children}
-        </ThemeProvider>
+        </RootLayoutClient>
       </body>
     </html>
   )

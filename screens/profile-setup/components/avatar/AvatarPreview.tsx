@@ -25,7 +25,6 @@ export function AvatarPreview({ avatar }: AvatarPreviewProps) {
       <AvatarBuilder
         avatar={avatar}
         size={200}
-        className="shadow-lg"
       />
     </div>
   )
