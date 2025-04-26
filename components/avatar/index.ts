@@ -1,2 +1,3 @@
 export * from './AvatarBuilder'
-export * from './UserAvatar'
+export * from './OutfitButton'
+export * from './OutfitSelector'

@@ -51,8 +51,6 @@ export function AvatarStep({
   onNext,
   onBack
 }: AvatarStepProps) {
-  // No state needed for popovers as they handle their own open/close state
-
   return (
     <div className="space-y-6">
       <div className="flex flex-col items-center">
@@ -75,7 +73,7 @@ export function AvatarStep({
               <div className="flex-1">
                 <Popover>
                   <PopoverTrigger asChild>
-                    <Button variant="outline" className="w-full">
+                    <Button variant="outline" className="size-12 border-2 border-slate-800">
                       Face
                     </Button>
                   </PopoverTrigger>
@@ -142,7 +140,7 @@ export function AvatarStep({
               <div className="flex-1">
                 <Popover>
                   <PopoverTrigger asChild>
-                    <Button variant="outline" className="w-full">
+                    <Button variant="outline" className="size-12 border-2 border-slate-800">
                       Hair
                     </Button>
                   </PopoverTrigger>
@@ -182,8 +180,45 @@ export function AvatarStep({
               <div className="flex-1">
                 <Popover>
                   <PopoverTrigger asChild>
-                    <Button variant="outline" className="w-full">
+                    <Button variant="outline" className="size-12 border-2 border-slate-800">
                       Style
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-80 p-4 max-h-[50vh] overflow-y-auto">
+                    <div className="space-y-4">
+                      <div>
+                        <h3 className="text-sm font-medium mb-2">Clothing</h3>
+                        <AvatarFeatureSelector
+                          options={clothingOptions}
+                          selected={avatar.clothing.option}
+                          onChange={(option) => onUpdateFeature("clothing", { type: "clothing", option })}
+                        />
+                      </div>
+
+                      <div>
+                        <h3 className="text-sm font-medium mb-2">Accessories</h3>
+                        <AvatarFeatureSelector
+                          options={accessoriesOptions}
+                          selected={avatar.accessories[0]?.option || "none"}
+                          onChange={(option) => {
+                            if (option === "none") {
+                              onUpdateFeature("accessories", { type: "accessories", option: "none" })
+                            } else {
+                              onUpdateFeature("accessories", { type: "accessories", option })
+                            }
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </PopoverContent>
+                </Popover>
+              </div>
+
+              <div className="flex-1">
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button variant="outline" className="size-12 border-2 border-slate-800">
+                      Outfit
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-80 p-4 max-h-[50vh] overflow-y-auto">

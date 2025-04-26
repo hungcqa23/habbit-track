@@ -45,10 +45,18 @@ export const mouthOptions = [
 
 // Hair options
 export const hairOptions = [
-  { id: "short", label: "Short" },
-  { id: "long", label: "Long" },
-  { id: "curly", label: "Curly" },
-  { id: "bun", label: "Bun" },
+  { id: "style01", label: "Style 1" },
+  { id: "style02", label: "Style 2" },
+  { id: "style04", label: "Style 3" },
+  { id: "style05", label: "Style 4" },
+  { id: "style08", label: "Style 5" },
+  { id: "style10", label: "Style 6" },
+  { id: "style11", label: "Style 7" },
+  { id: "style12", label: "Style 8" },
+  { id: "style15", label: "Style 9" },
+  { id: "style18", label: "Style 10" },
+  { id: "style24", label: "Style 11" },
+  { id: "style27", label: "Style 12" },
   { id: "bald", label: "Bald" }
 ]
 
