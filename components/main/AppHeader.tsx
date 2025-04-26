@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils"
 const routes = [
   {
     name: "Dashboard",
-    path: "/",
+    path: "/main",
     icon: CalendarCheck2,
   },
   {
@@ -79,10 +79,12 @@ export function AppHeader() {
             ))}
           </nav>
           <div className="flex items-center space-x-2">
-            <Button variant="outline" size="sm">
-              Sign In
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="/profile">
+                <User className="h-4 w-4 mr-2" />
+                My Profile
+              </Link>
             </Button>
-            <Button size="sm">Get Started</Button>
           </div>
         </div>
         <div className="flex flex-1 items-center justify-end md:hidden">
@@ -115,8 +117,9 @@ export function AppHeader() {
                 ))}
               </nav>
               <div className="flex flex-col space-y-2 pt-4">
-                <Button variant="outline">Sign In</Button>
-                <Button>Get Started</Button>
+                <Button variant="outline" asChild>
+                  <Link href="/profile" onClick={() => setOpen(false)}>My Profile</Link>
+                </Button>
               </div>
             </SheetContent>
           </Sheet>

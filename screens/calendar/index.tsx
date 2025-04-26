@@ -1,13 +1,10 @@
-import { AppHeader } from "@/components/app-header"
+import { MainLayout } from "@/components/main"
 import { CalendarView } from "./components"
 
 export default function CalendarPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-muted/30">
-      <AppHeader />
-      <div className="container max-w-6xl mx-auto py-8 px-4">
-        <CalendarView />
-      </div>
-    </div>
+    <MainLayout>
+      <CalendarView />
+    </MainLayout>
   )
 }

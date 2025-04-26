@@ -10,11 +10,6 @@ import { cn } from "@/lib/utils"
 
 const routes = [
   {
-    name: "Dashboard",
-    path: "/",
-    icon: CalendarCheck2,
-  },
-  {
     name: "Analytics",
     path: "/analytics",
     icon: BarChart3,
@@ -59,11 +54,15 @@ export function AppHeader() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 items-center">
         <div className="mr-4 flex items-center gap-2 md:mr-6">
-          <CalendarCheck2 className="h-6 w-6 text-primary" />
+          <CalendarCheck2 className="size-6 text-primary" />
           <span className="hidden font-bold sm:inline-block">HabitTrack</span>
         </div>
-        <div className="hidden md:flex md:flex-1 md:items-center md:justify-between">
-          <nav className="flex items-center space-x-1">
+        <div className="hidden md:flex md:flex-1 md:items-center">
+          {/* Left spacer */}
+          <div className="flex-1"></div>
+
+          {/* Centered navigation */}
+          <nav className="flex items-center space-x-1 justify-center">
             {routes.map((route) => (
               <Link
                 key={route.path}
@@ -73,29 +72,31 @@ export function AppHeader() {
                   pathname === route.path ? "text-primary" : "text-muted-foreground",
                 )}
               >
-                <route.icon className="mr-2 h-4 w-4" />
+                <route.icon className="mr-2 size-4" />
                 {route.name}
               </Link>
             ))}
           </nav>
-          <div className="flex items-center space-x-2">
-            <Button variant="outline" size="sm">
-              Sign In
-            </Button>
-            <Button size="sm">Get Started</Button>
+
+          {/* Right user greeting */}
+          <div className="flex-1 flex items-center justify-end">
+            <div className="flex items-center gap-2 text-sm font-medium">
+              <User className="size-4 text-primary" />
+              <span>Hi, Hung</span>
+            </div>
           </div>
         </div>
         <div className="flex flex-1 items-center justify-end md:hidden">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="h-8 w-8">
-                <Menu className="h-5 w-5" />
+              <Button variant="outline" size="icon" className="size-8">
+                <Menu className="size-5" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="left">
               <div className="flex items-center gap-2 py-4">
-                <CalendarCheck2 className="h-6 w-6 text-primary" />
+                <CalendarCheck2 className="size-6 text-primary" />
                 <span className="font-bold">HabitTrack</span>
               </div>
               <nav className="flex flex-col space-y-3 py-4">
@@ -109,14 +110,14 @@ export function AppHeader() {
                     )}
                     onClick={() => setOpen(false)}
                   >
-                    <route.icon className="mr-2 h-4 w-4" />
+                    <route.icon className="mr-2 size-4" />
                     {route.name}
                   </Link>
                 ))}
               </nav>
-              <div className="flex flex-col space-y-2 pt-4">
-                <Button variant="outline">Sign In</Button>
-                <Button>Get Started</Button>
+              <div className="flex items-center gap-2 pt-4 text-sm font-medium">
+                <User className="size-4 text-primary" />
+                <span>Hi, Hung</span>
               </div>
             </SheetContent>
           </Sheet>

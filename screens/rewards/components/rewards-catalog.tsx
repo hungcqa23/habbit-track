@@ -88,11 +88,11 @@ export function RewardsCatalog({ rewards, coins, onRedeem }: RewardsCatalogProps
             <Card
               key={reward.id}
               className={`
-                overflow-hidden transition-all border-none shadow-md
+                overflow-hidden transition-all border-none shadow-md bg-card
                 ${canAfford ? "hover:shadow-lg" : "opacity-70"}
               `}
             >
-              <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-50`}></div>
+              {/* Background gradient removed */}
               <CardHeader className="pb-2 relative">
                 <div className="flex justify-between">
                   <div className="flex items-center gap-2">
