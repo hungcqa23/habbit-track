@@ -1,7 +1,8 @@
 "use client"
 
 import { ReactNode } from "react"
-import { AppHeader } from "@/components/app-header"
+import { AppHeader } from "@/components/main/AppHeader"
+import { Footer } from "@/components/main/Footer"
 
 interface MainLayoutProps {
   children: ReactNode
@@ -9,11 +10,12 @@ interface MainLayoutProps {
 
 export default function MainLayout({ children }: MainLayoutProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-muted/30">
+    <div className="min-h-screen flex flex-col">
       <AppHeader />
-      <div className="container max-w-6xl mx-auto py-8 px-4">
+      <main className="flex-grow w-full">
         {children}
-      </div>
+      </main>
+      <Footer />
     </div>
   )
 }

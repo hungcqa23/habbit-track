@@ -33,7 +33,7 @@ interface NewBossBattleDialogProps {
 }
 
 export function NewBossBattleDialog({ open, onOpenChange, onAddBossBattle }: NewBossBattleDialogProps) {
-  // Form state
+
   const [name, setName] = useState("")
   const [description, setDescription] = useState("")
   const [difficulty, setDifficulty] = useState<BossBattle["difficulty"]>("medium")
@@ -43,7 +43,7 @@ export function NewBossBattleDialog({ open, onOpenChange, onAddBossBattle }: New
   const [requirements, setRequirements] = useState<BossBattleRequirement[]>([{ description: "", completed: false }])
   const [rewards, setRewards] = useState<BossBattleReward[]>([{ type: "coins", amount: 50 }])
 
-  // Battle templates
+
   const templates = [
     {
       name: "7-Day Streak Challenge",
@@ -58,7 +58,7 @@ export function NewBossBattleDialog({ open, onOpenChange, onAddBossBattle }: New
       ],
       rewards: [
         { type: "coins" as const, amount: 50 },
-        { type: "xp" as const, amount: 100 },
+        { type: "experience" as const, amount: 100 },
       ],
     },
     {
@@ -75,8 +75,8 @@ export function NewBossBattleDialog({ open, onOpenChange, onAddBossBattle }: New
       ],
       rewards: [
         { type: "coins" as const, amount: 200 },
-        { type: "xp" as const, amount: 300 },
-        { type: "achievement" as const, name: "30-Day Champion" },
+        { type: "experience" as const, amount: 300 },
+        { type: "strength" as const, amount: 10 },
       ],
     },
     {
@@ -93,14 +93,14 @@ export function NewBossBattleDialog({ open, onOpenChange, onAddBossBattle }: New
       ],
       rewards: [
         { type: "coins" as const, amount: 500 },
-        { type: "xp" as const, amount: 1000 },
-        { type: "achievement" as const, name: "Habit Master" },
-        { type: "item" as const, name: "Special Profile Badge" },
+        { type: "experience" as const, amount: 1000 },
+        { type: "strength" as const, amount: 20 },
+        { type: "smart" as const, amount: 20 },
       ],
     },
   ]
 
-  // Apply template
+
   const applyTemplate = (index: number) => {
     const template = templates[index]
     setName(template.name)
@@ -121,19 +121,19 @@ export function NewBossBattleDialog({ open, onOpenChange, onAddBossBattle }: New
     setRewards([...template.rewards])
   }
 
-  // Add requirement
+
   const addRequirement = () => {
     setRequirements([...requirements, { description: "", completed: false }])
   }
 
-  // Update requirement
+
   const updateRequirement = (index: number, description: string) => {
     const newRequirements = [...requirements]
     newRequirements[index].description = description
     setRequirements(newRequirements)
   }
 
-  // Remove requirement
+
   const removeRequirement = (index: number) => {
     if (requirements.length > 1) {
       const newRequirements = [...requirements]
@@ -142,19 +142,19 @@ export function NewBossBattleDialog({ open, onOpenChange, onAddBossBattle }: New
     }
   }
 
-  // Add reward
+
   const addReward = () => {
     setRewards([...rewards, { type: "coins", amount: 50 }])
   }
 
-  // Update reward
+
   const updateReward = (index: number, field: string, value: any) => {
     const newRewards = [...rewards]
     ;(newRewards[index] as any)[field] = value
     setRewards(newRewards)
   }
 
-  // Remove reward
+
   const removeReward = (index: number) => {
     if (rewards.length > 1) {
       const newRewards = [...rewards]
@@ -163,7 +163,7 @@ export function NewBossBattleDialog({ open, onOpenChange, onAddBossBattle }: New
     }
   }
 
-  // Reset form
+
   const resetForm = () => {
     setName("")
     setDescription("")
@@ -175,16 +175,16 @@ export function NewBossBattleDialog({ open, onOpenChange, onAddBossBattle }: New
     setRewards([{ type: "coins", amount: 50 }])
   }
 
-  // Handle form submission
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
-    // Validate form
+
     if (!name.trim() || !description.trim() || requirements.some((req) => !req.description.trim())) {
       return
     }
 
-    // Create new boss battle
+
     const newBossBattle: Omit<BossBattle, "id" | "status" | "currentProgress" | "completedDate"> = {
       name,
       description,
@@ -413,28 +413,19 @@ export function NewBossBattleDialog({ open, onOpenChange, onAddBossBattle }: New
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="coins">Coins</SelectItem>
-                          <SelectItem value="xp">XP</SelectItem>
-                          <SelectItem value="item">Item</SelectItem>
-                          <SelectItem value="achievement">Achievement</SelectItem>
+                          <SelectItem value="experience">XP</SelectItem>
+                          <SelectItem value="strength">Strength</SelectItem>
+                          <SelectItem value="smart">Smart</SelectItem>
                         </SelectContent>
                       </Select>
 
-                      {(reward.type === "coins" || reward.type === "xp") && (
+                      {(reward.type === "coins" || reward.type === "experience" || reward.type === "strength" || reward.type === "smart") && (
                         <Input
                           type="number"
                           min={1}
                           value={reward.amount}
                           onChange={(e) => updateReward(index, "amount", parseInt(e.target.value) || 0)}
                           placeholder="Amount"
-                          required
-                        />
-                      )}
-
-                      {(reward.type === "item" || reward.type === "achievement") && (
-                        <Input
-                          value={reward.name || ""}
-                          onChange={(e) => updateReward(index, "name", e.target.value)}
-                          placeholder={`${reward.type === "item" ? "Item name" : "Achievement name"}`}
                           required
                         />
                       )}

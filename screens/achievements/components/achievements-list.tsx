@@ -22,6 +22,7 @@ import {
   Heart,
   Leaf,
 } from "lucide-react"
+import { Crown } from "@/components/icons"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -193,25 +194,7 @@ const allAchievements = [
   },
 ]
 
-// Custom Crown icon since it's not in lucide-react
-function Crown(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M12 6l4 6 5-4-3 10H6L3 8l5 4 4-6z" />
-    </svg>
-  )
-}
+
 
 export function AchievementsList({ habits }: AchievementsListProps) {
   // Get all unique achievements across all habits

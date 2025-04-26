@@ -14,7 +14,7 @@ export function LevelProgress({ level, currentXP, nextLevelXP }: LevelProgressPr
 
   return (
     <Card className="border-none shadow-md overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 opacity-50"></div>
+
       <CardContent className="p-4 relative">
         <div className="flex justify-between items-center mb-3">
           <div className="flex items-center gap-3">

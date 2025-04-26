@@ -44,11 +44,11 @@ export default function LandingPage() {
             </Link>
           </nav>
           <div className="flex items-center gap-4">
-            <Link href="/" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+            <Link href="/login" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
               Log in
             </Link>
             <Button asChild>
-              <Link href="/">Get Started</Link>
+              <Link href="/sign-in">Get Started</Link>
             </Button>
           </div>
         </div>
@@ -353,9 +353,11 @@ export default function LandingPage() {
               Join thousands of users who are already building better habits and leveling up their lives with
               HabitTrack.
             </p>
-            <Button size="lg" className="gap-2">
-              Get Started Now
-              <ArrowRight className="h-4 w-4" />
+            <Button size="lg" className="gap-2" asChild>
+              <Link href="/sign-in">
+                Get Started Now
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </Button>
           </div>
         </section>

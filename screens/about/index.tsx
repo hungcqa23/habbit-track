@@ -1,10 +1,10 @@
-import { MainLayout } from "@/components/main"
 import { AboutContent } from "./components"
+import { ContentContainer } from "@/components/main"
 
 export default function AboutPage() {
   return (
-    <MainLayout>
+    <ContentContainer>
       <AboutContent />
-    </MainLayout>
+    </ContentContainer>
   )
 }

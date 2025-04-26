@@ -3,13 +3,12 @@ import { ArchiveRestore, Trash2 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { useHabits } from "@/lib/hooks/use-habits"
+import { useArchivedHabits } from "../hooks"
 
 export function ArchivedHabits() {
-  const { habits, deleteHabit, restoreHabit } = useHabits()
-  const archivedHabits = habits.filter((habit) => habit.archived)
+  const { archivedHabits, deleteHabit, restoreHabit, hasArchivedHabits } = useArchivedHabits()
 
-  if (archivedHabits.length === 0) {
+  if (!hasArchivedHabits) {
     return (
       <div className="mt-8 text-center p-8 border border-dashed rounded-lg">
         <h2 className="text-2xl font-bold mb-4">Archive</h2>

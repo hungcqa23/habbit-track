@@ -1,12 +1,12 @@
 "use client"
 
-import { MainLayout } from "@/components/main"
 import { RewardsContent } from "./components"
+import { ContentContainer } from "@/components/main"
 
 export default function RewardsPage() {
   return (
-    <MainLayout>
+    <ContentContainer>
       <RewardsContent />
-    </MainLayout>
+    </ContentContainer>
   )
 }

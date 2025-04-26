@@ -6,11 +6,9 @@ import {
   Swords,
   Trophy,
   Flame,
-  Timer,
   Star,
   Calendar,
   CheckCircle2,
-  XCircle,
   AlertTriangle,
 } from "lucide-react"
 import {
@@ -44,24 +42,18 @@ interface BossBattleDetailsDialogProps {
 export function BossBattleDetailsDialog({ open, onOpenChange, bossBattle, onAbandon }: BossBattleDetailsDialogProps) {
   const [abandonConfirmOpen, setAbandonConfirmOpen] = useState(false)
 
-  // Calculate progress percentage
+
   const progressPercentage = Math.min(100, Math.round((bossBattle.currentProgress / bossBattle.requiredProgress) * 100))
 
-  // Determine if the battle is active (accepted but not completed)
   const isActive = bossBattle.status === "active"
-
-  // Determine if the battle is completed
   const isCompleted = bossBattle.status === "completed"
 
-  // Determine if the battle is failed/abandoned
-  const isAbandoned = bossBattle.status === "abandoned"
 
-  // Calculate days remaining if there's a deadline
   const daysRemaining = bossBattle.deadline
     ? Math.ceil((new Date(bossBattle.deadline).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24))
     : null
 
-  // Format date
+
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("en-US", {
       year: "numeric",
@@ -70,7 +62,7 @@ export function BossBattleDetailsDialog({ open, onOpenChange, bossBattle, onAban
     })
   }
 
-  // Get color based on difficulty
+
   const getDifficultyColor = () => {
     switch (bossBattle.difficulty) {
       case "easy":
@@ -86,7 +78,7 @@ export function BossBattleDetailsDialog({ open, onOpenChange, bossBattle, onAban
     }
   }
 
-  // Handle abandon battle
+
   const handleAbandon = () => {
     onAbandon(bossBattle.id)
     setAbandonConfirmOpen(false)
@@ -198,7 +190,7 @@ export function BossBattleDetailsDialog({ open, onOpenChange, bossBattle, onAban
               </h4>
               <div className="grid grid-cols-2 gap-3">
                 {bossBattle.rewards.map((reward, index) => {
-                  let icon = <Star className="h-5 w-5" />
+                  let icon: React.ReactNode = <Star className="h-5 w-5" />
                   let label = ""
                   let color = "text-primary"
 
@@ -206,18 +198,18 @@ export function BossBattleDetailsDialog({ open, onOpenChange, bossBattle, onAban
                     icon = "🪙"
                     label = `${reward.amount} Coins`
                     color = "text-yellow-500"
-                  } else if (reward.type === "xp") {
+                  } else if (reward.type === "experience") {
                     icon = "✨"
                     label = `${reward.amount} XP`
                     color = "text-blue-500"
-                  } else if (reward.type === "item") {
-                    icon = "🎁"
-                    label = reward.name || "Special Item"
+                  } else if (reward.type === "strength") {
+                    icon = "💪"
+                    label = `${reward.amount} Strength`
+                    color = "text-red-500"
+                  } else if (reward.type === "smart") {
+                    icon = "🧠"
+                    label = `${reward.amount} Smart`
                     color = "text-purple-500"
-                  } else if (reward.type === "achievement") {
-                    icon = <Trophy className="h-5 w-5" />
-                    label = reward.name || "Achievement"
-                    color = "text-amber-500"
                   }
 
                   return (

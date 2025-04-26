@@ -1,30 +1,32 @@
 "use client"
 
-import { useState } from "react"
 import { PlusCircle, Filter } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { HabitList } from "@/components/habit-list"
 import { NewHabitDialog } from "@/components/new-habit-dialog"
 import { CategoryFilter } from "@/components/category-filter"
-import { useHabits } from "@/lib/hooks/use-habits"
 import { StreakLeaderboard } from "@/components/streak-leaderboard"
+import { useHabitDashboard } from "@/screens/main/hooks"
 
 export function HabitDashboard() {
-  const { habits, addHabit, toggleHabitCompletion, deleteHabit, archiveHabit, updateHabitGoal, useStreakFreeze } =
-    useHabits()
-
-  const [isDialogOpen, setIsDialogOpen] = useState(false)
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
-  const [showCategoryFilter, setShowCategoryFilter] = useState(false)
-
-  // Filter habits by selected category
-  const filteredHabits = selectedCategory
-    ? habits.filter((habit) => !habit.archived && habit.category === selectedCategory)
-    : habits.filter((habit) => !habit.archived)
-
-  // Get unique categories from habits
-  const categories = [...new Set(habits.map((habit) => habit.category))].filter(Boolean)
+  const {
+    habits,
+    addHabit,
+    toggleHabitCompletion,
+    deleteHabit,
+    archiveHabit,
+    updateHabitGoal,
+    useStreakFreeze,
+    isDialogOpen,
+    setIsDialogOpen,
+    selectedCategory,
+    setSelectedCategory,
+    showCategoryFilter,
+    setShowCategoryFilter,
+    filteredHabits,
+    categories
+  } = useHabitDashboard()
 
   return (
     <div>

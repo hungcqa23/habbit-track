@@ -1,10 +1,10 @@
-import { MainLayout } from "@/components/main"
 import { AnalyticsDashboard } from "./components"
+import { ContentContainer } from "@/components/main"
 
 export default function AnalyticsPage() {
   return (
-    <MainLayout>
+    <ContentContainer>
       <AnalyticsDashboard />
-    </MainLayout>
+    </ContentContainer>
   )
 }

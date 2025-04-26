@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Progress } from "@/components/ui/progress"
 import { Dumbbell, Brain, Coins } from "lucide-react"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { Shield } from "@/components/icons"
 
 interface AttributesSectionProps {
   strength: number
@@ -11,20 +12,11 @@ interface AttributesSectionProps {
 
 export function AttributesSection({ strength, smart, coins }: AttributesSectionProps) {
   return (
-    <Card className="border-none shadow-md bg-gradient-to-br from-background to-muted/30">
+    <Card className="border-none shadow-md">
       <CardHeader className="pb-2">
         <CardTitle className="text-xl flex items-center gap-2">
           <span className="bg-primary/10 p-1 rounded-md">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M12 2L4 6V12C4 15.31 7.58 20 12 22C16.42 20 20 15.31 20 12V6L12 2Z"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-primary"
-              />
-            </svg>
+            <Shield className="w-5 h-5 text-primary" />
           </span>
           Attributes
         </CardTitle>

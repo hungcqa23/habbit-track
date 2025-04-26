@@ -1,67 +1,32 @@
 "use client"
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { CalendarCheck2 } from "lucide-react"
-import { 
-  Card, 
-  CardContent, 
-  CardDescription, 
-  CardFooter, 
-  CardHeader, 
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
   CardTitle,
   Button,
   Input,
   Label,
   Checkbox
 } from "@/components/ui"
-import { useToast } from "@/components/ui/use-toast"
+import { useSignIn } from "../hooks"
 
 export function SignInContent() {
-  const router = useRouter()
-  const { toast } = useToast()
-  const [isLoading, setIsLoading] = useState(false)
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    rememberMe: false
-  })
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }))
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-
-    try {
-      // Simulate authentication
-      await new Promise(resolve => setTimeout(resolve, 1500))
-      
-      // Show success toast
-      toast({
-        title: "Sign in successful",
-        description: "Welcome back to HabitTrack!",
-      })
-
-      // Redirect to main dashboard
-      router.push("/main")
-    } catch (error) {
-      toast({
-        title: "Sign in failed",
-        description: "Please check your credentials and try again.",
-        variant: "destructive"
-      })
-    } finally {
-      setIsLoading(false)
-    }
-  }
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    rememberMe,
+    setRememberMe,
+    isLoading,
+    handleSignIn
+  } = useSignIn()
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh] px-4">
@@ -77,55 +42,53 @@ export function SignInContent() {
             Enter your credentials to access your account
           </CardDescription>
         </CardHeader>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSignIn}>
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
-              <Input 
-                id="email" 
+              <Input
+                id="email"
                 name="email"
-                type="email" 
-                placeholder="name@example.com" 
-                value={formData.email}
-                onChange={handleChange}
+                type="email"
+                placeholder="name@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <Label htmlFor="password">Password</Label>
-                <Link 
-                  href="/forgot-password" 
+                <Link
+                  href="/forgot-password"
                   className="text-sm text-primary hover:underline"
                 >
                   Forgot password?
                 </Link>
               </div>
-              <Input 
-                id="password" 
+              <Input
+                id="password"
                 name="password"
-                type="password" 
-                value={formData.password}
-                onChange={handleChange}
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
             <div className="flex items-center space-x-2">
-              <Checkbox 
-                id="remember-me" 
+              <Checkbox
+                id="remember-me"
                 name="rememberMe"
-                checked={formData.rememberMe}
-                onCheckedChange={(checked) => 
-                  setFormData(prev => ({ ...prev, rememberMe: checked as boolean }))
-                }
+                checked={rememberMe}
+                onCheckedChange={(checked) => setRememberMe(checked as boolean)}
               />
               <Label htmlFor="remember-me" className="text-sm">Remember me</Label>
             </div>
           </CardContent>
           <CardFooter className="flex flex-col space-y-4">
-            <Button 
-              type="submit" 
-              className="w-full" 
+            <Button
+              type="submit"
+              className="w-full"
               disabled={isLoading}
             >
               {isLoading ? "Signing in..." : "Sign In"}

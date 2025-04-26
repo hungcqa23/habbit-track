@@ -1,12 +1,12 @@
 "use client"
 
-import { MainLayout } from "@/components/main"
 import { ProfileContent } from "./components"
+import { ContentContainer } from "@/components/main"
 
 export default function ProfilePage() {
   return (
-    <MainLayout>
+    <ContentContainer>
       <ProfileContent />
-    </MainLayout>
+    </ContentContainer>
   )
 }

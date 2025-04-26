@@ -1,12 +1,12 @@
 "use client"
 
-import { MainLayout } from "@/components/main"
 import { AchievementsContent } from "./components"
+import { ContentContainer } from "@/components/main"
 
 export default function AchievementsPage() {
   return (
-    <MainLayout>
+    <ContentContainer>
       <AchievementsContent />
-    </MainLayout>
+    </ContentContainer>
   )
 }

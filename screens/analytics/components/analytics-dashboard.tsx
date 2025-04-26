@@ -3,35 +3,22 @@ import { BarChart, LineChart, PieChart, Award } from "lucide-react"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { useHabits } from "@/lib/hooks/use-habits"
 import { CompletionRateChart } from "./completion-rate-chart"
 import { StreakChart } from "./streak-chart"
 import { CategoryDistributionChart } from "./category-distribution-chart"
 import { AchievementsView } from "@/components/achievements-view"
+import { useAnalyticsData } from "../hooks"
 
 export function AnalyticsDashboard() {
-  const { habits } = useHabits()
-  const activeHabits = habits.filter((habit) => !habit.archived)
-
-  // Calculate overall stats
-  const totalHabits = activeHabits.length
-  const totalCompletions = activeHabits.reduce((sum, habit) => sum + habit.completedDates.length, 0)
-
-  const averageStreak =
-    totalHabits > 0 ? Math.round(activeHabits.reduce((sum, habit) => sum + habit.streak, 0) / totalHabits) : 0
-
-  const longestStreak = activeHabits.reduce((max, habit) => Math.max(max, habit.streak), 0)
-
-  // Get today's date
-  const today = new Date().toISOString().split("T")[0]
-
-  // Calculate today's completion rate
-  const habitsCompletedToday = activeHabits.filter((habit) => habit.completedDates.includes(today)).length
-
-  const todayCompletionRate = totalHabits > 0 ? Math.round((habitsCompletedToday / totalHabits) * 100) : 0
-
-  // Calculate total achievements
-  const totalAchievements = activeHabits.reduce((sum, habit) => sum + habit.achievements.length, 0)
+  const {
+    habits,
+    activeHabits,
+    totalHabits,
+    habitsCompletedToday,
+    todayCompletionRate,
+    averageStreak,
+    totalAchievements
+  } = useAnalyticsData()
 
   return (
     <div className="space-y-8">

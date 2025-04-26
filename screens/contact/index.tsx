@@ -1,10 +1,10 @@
-import { MainLayout } from "@/components/main"
 import { ContactContent } from "./components"
+import { ContentContainer } from "@/components/main"
 
 export default function ContactPage() {
   return (
-    <MainLayout>
+    <ContentContainer>
       <ContactContent />
-    </MainLayout>
+    </ContentContainer>
   )
 }

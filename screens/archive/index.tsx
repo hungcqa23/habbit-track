@@ -1,10 +1,10 @@
-import { MainLayout } from "@/components/main"
 import { ArchivedHabits } from "./components"
+import { ContentContainer } from "@/components/main"
 
 export default function ArchivePage() {
   return (
-    <MainLayout>
+    <ContentContainer>
       <ArchivedHabits />
-    </MainLayout>
+    </ContentContainer>
   )
 }

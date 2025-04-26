@@ -1,10 +1,10 @@
-import { MainLayout } from "@/components/main"
 import { BossBattlesDashboard } from "./components"
+import { ContentContainer } from "@/components/main"
 
 export default function BossBattlesPage() {
   return (
-    <MainLayout>
+    <ContentContainer>
       <BossBattlesDashboard />
-    </MainLayout>
+    </ContentContainer>
   )
 }
