@@ -99,6 +99,12 @@ export function SignInContent() {
                 Sign up
               </Link>
             </div>
+            <div className="text-center text-sm">
+              New user?{" "}
+              <Link href="/profile-setup" className="text-primary hover:underline">
+                Set up your profile
+              </Link>
+            </div>
           </CardFooter>
         </form>
       </Card>

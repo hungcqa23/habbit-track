@@ -15,9 +15,29 @@ export interface Habit {
   experience: number
 }
 
+export interface AvatarFeature {
+  type: string
+  option: string
+  color?: string
+}
+
+export interface Avatar {
+  faceShape: AvatarFeature
+  eyes: AvatarFeature
+  eyebrows: AvatarFeature
+  nose: AvatarFeature
+  mouth: AvatarFeature
+  hair: AvatarFeature
+  facialHair: AvatarFeature
+  skinColor: string
+  hairColor: string
+  accessories: AvatarFeature[]
+  clothing: AvatarFeature
+}
+
 export interface Profile {
   name: string
-  avatar: string
+  avatar: string | Avatar
   bio: string
   level: number
   experience: number
@@ -49,6 +69,8 @@ export interface Profile {
     profileVisibility?: string
     activityVisibility?: number
   }
+  initialFocus?: string[]
+  preferredCategories?: string[]
 }
 
 export interface Activity {

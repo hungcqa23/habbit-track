@@ -9,13 +9,13 @@ export function useSignIn() {
   const [password, setPassword] = useState("")
   const [rememberMe, setRememberMe] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  
+
   const router = useRouter()
   const { toast } = useToast()
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     if (!email || !password) {
       toast({
         title: "Error",
@@ -24,17 +24,18 @@ export function useSignIn() {
       })
       return
     }
-    
+
     setIsLoading(true)
-    
+
     try {
       // Simulate authentication delay
       await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      // For demo purposes, we'll just redirect to the main page
+
+      // For demo purposes, we'll redirect to the profile setup page
       // In a real app, you would validate credentials with your backend
-      router.push("/main")
-      
+      // and check if the user has already set up their profile
+      router.push("/profile-setup")
+
       toast({
         title: "Success",
         description: "You have successfully signed in",
