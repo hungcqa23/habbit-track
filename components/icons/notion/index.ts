@@ -1,2 +1,7 @@
 export * from './NotionHair'
 export * from './NotionOutfit'
+export * from './NotionFace'
+export * from './NotionAccessories'
+export * from './NotionBackground'
+export * from './NotionEye'
+export * from './NotionMouth'

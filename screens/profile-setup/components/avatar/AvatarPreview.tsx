@@ -6,16 +6,12 @@ import { AvatarBuilder } from "@/components/avatar"
 interface AvatarPreviewProps {
   avatar: {
     faceShape: AvatarFeature
-    eyes: AvatarFeature
-    eyebrows: AvatarFeature
-    nose: AvatarFeature
-    mouth: AvatarFeature
     hair: AvatarFeature
-    facialHair: AvatarFeature
-    skinColor: string
     hairColor: string
     accessories: AvatarFeature[]
     clothing: AvatarFeature
+    eyes?: AvatarFeature
+    mouth?: AvatarFeature
   }
 }
 
@@ -25,6 +21,7 @@ export function AvatarPreview({ avatar }: AvatarPreviewProps) {
       <AvatarBuilder
         avatar={avatar}
         size={200}
+        className="rounded-full"
       />
     </div>
   )

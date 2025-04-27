@@ -20,17 +20,13 @@ const initialProfileData: ProfileSetupData = {
   name: "",
   bio: "",
   avatar: {
-    faceShape: { type: "faceShape", option: "round" },
-    eyes: { type: "eyes", option: "default" },
-    eyebrows: { type: "eyebrows", option: "default" },
-    nose: { type: "nose", option: "default" },
-    mouth: { type: "mouth", option: "default" },
-    hair: { type: "hair", option: "short" },
-    facialHair: { type: "facialHair", option: "none" },
-    skinColor: "#F8D5C2",
+    faceShape: { type: "faceShape", option: "01" },
+    hair: { type: "hair", option: "style01" },
     hairColor: "#5E3719",
     accessories: [],
-    clothing: { type: "clothing", option: "tshirt" }
+    clothing: { type: "clothing", option: "01" },
+    eyes: { type: "eyes", option: "normal" },
+    mouth: { type: "mouth", option: "normalSmile1" }
   },
   initialFocus: [],
   preferredCategories: []
@@ -92,19 +88,18 @@ export function useProfileSetup() {
       description: "Generated a random avatar for you!",
     })
 
-    // Example random avatar (would be more sophisticated in real implementation)
+    // Example random avatar with Notion styles
     const randomAvatar = {
-      faceShape: { type: "faceShape", option: ["round", "oval", "square"][Math.floor(Math.random() * 3)] },
-      eyes: { type: "eyes", option: ["default", "round", "smiling"][Math.floor(Math.random() * 3)] },
-      eyebrows: { type: "eyebrows", option: ["default", "raised", "lowered"][Math.floor(Math.random() * 3)] },
-      nose: { type: "nose", option: ["default", "round", "pointed"][Math.floor(Math.random() * 3)] },
-      mouth: { type: "mouth", option: ["default", "smile", "serious"][Math.floor(Math.random() * 3)] },
-      hair: { type: "hair", option: ["short", "long", "curly", "bald"][Math.floor(Math.random() * 4)] },
-      facialHair: { type: "facialHair", option: ["none", "beard", "mustache"][Math.floor(Math.random() * 3)] },
-      skinColor: ["#F8D5C2", "#EDB98A", "#D08B5B", "#AE5D29", "#614335"][Math.floor(Math.random() * 5)],
+      faceShape: { type: "faceShape", option: ["01", "02", "03", "04", "05", "07", "08"][Math.floor(Math.random() * 7)] },
+      hair: { type: "hair", option: ["style01", "style02", "style04", "style05", "style08", "bald"][Math.floor(Math.random() * 6)] },
       hairColor: ["#5E3719", "#D6B97B", "#CB607E", "#000000", "#FFFFFF"][Math.floor(Math.random() * 5)],
-      accessories: [],
-      clothing: { type: "clothing", option: ["tshirt", "formal", "hoodie"][Math.floor(Math.random() * 3)] }
+      accessories: [{
+        type: "accessories",
+        option: ["none", "glasses", "roundedGlasses", "futuristicGlasses", "stylishGlasses", "mask", "cap", "earphone"][Math.floor(Math.random() * 8)]
+      }],
+      clothing: { type: "clothing", option: ["01", "02", "04", "05", "22", "24"][Math.floor(Math.random() * 6)] },
+      eyes: { type: "eyes", option: ["normal", "closed", "thin", "angry", "cynic", "sad"][Math.floor(Math.random() * 6)] },
+      mouth: { type: "mouth", option: ["normalSmile1", "normalSmile2", "openMouth", "openTooth", "eat", "whistle", "angry", "sad", "hate", "nervous", "mouth11"][Math.floor(Math.random() * 11)] }
     }
 
     setProfileData(prev => ({

@@ -1,46 +1,12 @@
-// Face shape options
-export const faceShapeOptions = [
-  { id: "round", label: "Round" },
-  { id: "oval", label: "Oval" },
-  { id: "square", label: "Square" },
-  { id: "heart", label: "Heart" },
-  { id: "diamond", label: "Diamond" }
-]
-
-// Eyes options
-export const eyesOptions = [
-  { id: "default", label: "Default" },
-  { id: "round", label: "Round" },
-  { id: "smiling", label: "Smiling" },
-  { id: "side", label: "Side" },
-  { id: "wink", label: "Wink" }
-]
-
-// Eyebrows options
-export const eyebrowsOptions = [
-  { id: "default", label: "Default" },
-  { id: "raised", label: "Raised" },
-  { id: "lowered", label: "Lowered" },
-  { id: "angry", label: "Angry" },
-  { id: "surprised", label: "Surprised" }
-]
-
-// Nose options
-export const noseOptions = [
-  { id: "default", label: "Default" },
-  { id: "round", label: "Round" },
-  { id: "pointed", label: "Pointed" },
-  { id: "small", label: "Small" },
-  { id: "wide", label: "Wide" }
-]
-
-// Mouth options
-export const mouthOptions = [
-  { id: "default", label: "Default" },
-  { id: "smile", label: "Smile" },
-  { id: "serious", label: "Serious" },
-  { id: "laugh", label: "Laugh" },
-  { id: "surprised", label: "Surprised" }
+// Face options
+export const faceOptions = [
+  { id: "01", label: "Style 1" },
+  { id: "02", label: "Style 2" },
+  { id: "03", label: "Style 3" },
+  { id: "04", label: "Style 4" },
+  { id: "05", label: "Style 5" },
+  { id: "07", label: "Style 7" },
+  { id: "08", label: "Style 8" }
 ]
 
 // Hair options
@@ -82,9 +48,22 @@ export const clothingOptions = [
 export const accessoriesOptions = [
   { id: "none", label: "None" },
   { id: "glasses", label: "Glasses" },
-  { id: "sunglasses", label: "Sunglasses" },
-  { id: "earrings", label: "Earrings" },
-  { id: "hat", label: "Hat" }
+  { id: "roundedGlasses", label: "Rounded Glasses" },
+  { id: "futuristicGlasses", label: "Futuristic Glasses" },
+  { id: "stylishGlasses", label: "Stylish Glasses" },
+  { id: "mask", label: "Mask" },
+  { id: "maskGoogle", label: "Google Mask" },
+  { id: "cap", label: "Cap" },
+  { id: "earphone", label: "Earphone" },
+  { id: "beard1", label: "Beard 1" },
+  { id: "beard2", label: "Beard 2" },
+  { id: "beard3", label: "Beard 3" },
+  { id: "beard4", label: "Beard 4" },
+  { id: "mousthace1", label: "Mousthace 1" },
+  { id: "mousthace2", label: "Mousthace 2" },
+  { id: "mousthace3", label: "Mousthace 3" },
+  { id: "mousthace4", label: "Mousthace 4" },
+  { id: "blush", label: "Blush" }
 ]
 
 // Skin color options

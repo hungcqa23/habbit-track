@@ -23,16 +23,12 @@ export interface AvatarFeature {
 
 export interface Avatar {
   faceShape: AvatarFeature
-  eyes: AvatarFeature
-  eyebrows: AvatarFeature
-  nose: AvatarFeature
-  mouth: AvatarFeature
   hair: AvatarFeature
-  facialHair: AvatarFeature
-  skinColor: string
   hairColor: string
   accessories: AvatarFeature[]
   clothing: AvatarFeature
+  eyes?: AvatarFeature
+  mouth?: AvatarFeature
 }
 
 export interface Profile {

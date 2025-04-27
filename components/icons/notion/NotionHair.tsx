@@ -32,8 +32,10 @@ export function NotionHair({ style, color = '#000000', className = '' }: NotionH
         height={306}
         className="w-full h-full object-contain"
         style={{
-          filter: getColorFilter(color)
+          filter: getColorFilter(color),
+          transform: 'scale(0.95)'
         }}
+        priority
       />
     </div>
   )

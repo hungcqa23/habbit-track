@@ -10,11 +10,11 @@ interface UserAvatarProps {
 
 export function UserAvatar({ size = 40, className }: UserAvatarProps) {
   const { profile } = useProfile()
-  
+
   // If profile doesn't have avatar data yet, return a placeholder
   if (!profile.avatar) {
     return (
-      <div 
+      <div
         className={`bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold ${className}`}
         style={{ width: size, height: size }}
       >
@@ -22,12 +22,12 @@ export function UserAvatar({ size = 40, className }: UserAvatarProps) {
       </div>
     )
   }
-  
+
   return (
-    <AvatarBuilder 
+    <AvatarBuilder
       avatar={profile.avatar}
       size={size}
-      className={className}
+      className={`rounded-full ${className || ''}`}
     />
   )
 }

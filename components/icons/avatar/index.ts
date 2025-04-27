@@ -1,9 +1,4 @@
-export * from './Face'
-export * from './Eyes'
-export * from './Eyebrows'
-export * from './Nose'
-export * from './Mouth'
-export * from './Hair'
-export * from './FacialHair'
+// This file is intentionally empty to satisfy imports
+// All avatar components have been moved to the Notion-style components
+
 export * from './Accessories'
-export * from './Clothing'

@@ -10,11 +10,15 @@ interface OutfitSelectorProps {
 }
 
 export function OutfitSelector({ selectedStyle, onSelect, className = '' }: OutfitSelectorProps) {
-  // Add all your available outfit styles here
-  const outfitStyles = ['01', '02', '04', '05', '22', '24']
+  // All available Notion outfit styles
+  const outfitStyles = [
+    '01', '02', '03', '04', '05', '06', '07', '08',
+    '10', '11', '12', '14', '16', '18', '20',
+    '21', '22', '23', '24', '25'
+  ]
 
   return (
-    <div className={`grid grid-cols-3 gap-4 ${className}`}>
+    <div className={`grid grid-cols-4 gap-3 max-h-[300px] overflow-y-auto ${className}`}>
       {outfitStyles.map((style) => (
         <OutfitButton
           key={style}

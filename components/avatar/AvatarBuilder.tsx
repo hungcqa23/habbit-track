@@ -1,29 +1,18 @@
 "use client"
 
 import React from 'react'
-import {
-  Face,
-  Eyes,
-  Eyebrows,
-  Nose,
-  Mouth,
-  Accessories,
-} from '@/components/icons/avatar'
-import { NotionHair, NotionOutfit } from '@/components/icons/notion'
+import { NotionHair, NotionOutfit, NotionFace, NotionAccessories, NotionBackground, NotionEye, NotionMouth } from '@/components/icons/notion'
 import type { AvatarFeature } from '@/lib/types'
 
 interface AvatarBuilderProps {
   avatar: {
     faceShape: AvatarFeature
-    eyes: AvatarFeature
-    eyebrows: AvatarFeature
-    nose: AvatarFeature
-    mouth: AvatarFeature
     hair: AvatarFeature
-    skinColor: string
     hairColor: string
     accessories: AvatarFeature[]
     clothing: AvatarFeature
+    eyes?: AvatarFeature
+    mouth?: AvatarFeature
   }
   size?: number
   className?: string
@@ -34,63 +23,57 @@ export function AvatarBuilder({ avatar, size = 200, className }: AvatarBuilderPr
 
   return (
     <div
-      className={`relative overflow-hidden ${sizeClass} ${className || ''}`}
+      className={`relative overflow-hidden rounded-full ${sizeClass} ${className || ''}`}
       style={sizeClass ? {} : { width: size, height: size }}
     >
-      <div className="absolute inset-0 w-full h-full">
-        <Face
-          shape={avatar.faceShape.option as any}
-          skinColor={avatar.skinColor}
-        />
-      </div>
+      <NotionBackground>
+        <div className="relative w-full h-full">
+          <div className="absolute inset-0 w-full h-full">
+            <NotionOutfit
+              style={avatar.clothing.option}
+            />
+          </div>
 
-      {avatar.hair.option !== 'bald' && (
-        <div className="absolute inset-0 w-full h-full">
-          <NotionHair
-            style={avatar.hair.option}
-            color={avatar.hairColor}
-          />
+          <div className="absolute inset-0 w-full h-full">
+            <NotionFace
+              style={avatar.faceShape.option}
+            />
+          </div>
+
+          {avatar.eyes && (
+            <div className="absolute inset-0 w-full h-full">
+              <NotionEye
+                style={avatar.eyes.option}
+              />
+            </div>
+          )}
+
+          {avatar.mouth && (
+            <div className="absolute inset-0 w-full h-full">
+              <NotionMouth
+                style={avatar.mouth.option}
+              />
+            </div>
+          )}
+
+          {avatar.hair.option !== 'bald' && (
+            <div className="absolute inset-0 w-full h-full">
+              <NotionHair
+                style={avatar.hair.option}
+                color={avatar.hairColor}
+              />
+            </div>
+          )}
+
+          {avatar.accessories.length > 0 && avatar.accessories[0].option !== 'none' && (
+            <div className="absolute inset-0 w-full h-full">
+              <NotionAccessories
+                style={avatar.accessories[0].option}
+              />
+            </div>
+          )}
         </div>
-      )}
-
-      <div className="absolute inset-0 w-full h-full">
-        <Eyebrows
-          type={avatar.eyebrows.option as any}
-          color={avatar.hairColor}
-        />
-      </div>
-
-      <div className="absolute inset-0 w-full h-full">
-        <Eyes
-          type={avatar.eyes.option as any}
-        />
-      </div>
-
-      <div className="absolute inset-0 w-full h-full">
-        <Nose
-          type={avatar.nose.option as any}
-        />
-      </div>
-
-      <div className="absolute inset-0 w-full h-full">
-        <Mouth
-          type={avatar.mouth.option as any}
-        />
-      </div>
-
-      {avatar.accessories.length > 0 && avatar.accessories[0].option !== 'none' && (
-        <div className="absolute inset-0 w-full h-full">
-          <Accessories
-            type={avatar.accessories[0].option as any}
-          />
-        </div>
-      )}
-
-      <div className="absolute bottom-0 left-0 w-full h-2/5">
-        <NotionOutfit
-          style={avatar.clothing.option}
-        />
-      </div>
+      </NotionBackground>
     </div>
   )
 }

@@ -6,12 +6,28 @@
  * Available avatar features
  */
 export const AVATAR_FEATURES = {
-  FACE_SHAPES: ['round', 'square', 'oval', 'heart', 'diamond'],
-  HAIR_STYLES: ['short', 'medium', 'long', 'curly', 'wavy', 'bald'],
-  EYE_TYPES: ['round', 'almond', 'wide', 'narrow'],
-  MOUTH_TYPES: ['smile', 'neutral', 'serious'],
-  NOSE_TYPES: ['small', 'medium', 'large'],
-  ACCESSORIES: ['glasses', 'earrings', 'hat', 'none']
+  FACE_STYLES: ['01', '02', '03', '04', '05', '07', '08'],
+  HAIR_STYLES: ['style01', 'style02', 'style04', 'style05', 'style08', 'bald'],
+  ACCESSORIES: [
+    'none',
+    'glasses',
+    'roundedGlasses',
+    'futuristicGlasses',
+    'stylishGlasses',
+    'mask',
+    'maskGoogle',
+    'cap',
+    'earphone',
+    'beard1',
+    'beard2',
+    'beard3',
+    'beard4',
+    'mousthace1',
+    'mousthace2',
+    'mousthace3',
+    'mousthace4',
+    'blush'
+  ]
 };
 
 /**

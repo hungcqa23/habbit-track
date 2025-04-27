@@ -9,15 +9,12 @@ import type { AvatarFeature } from '@/lib/types'
 interface AvatarCustomizerProps {
   avatar: {
     faceShape: AvatarFeature
-    eyes: AvatarFeature
-    eyebrows: AvatarFeature
-    nose: AvatarFeature
-    mouth: AvatarFeature
     hair: AvatarFeature
-    skinColor: string
     hairColor: string
     accessories: AvatarFeature[]
     clothing: AvatarFeature
+    eyes?: AvatarFeature
+    mouth?: AvatarFeature
   }
   onUpdate: (updates: Partial<typeof avatar>) => void
 }
@@ -40,8 +37,11 @@ export function AvatarCustomizer({ avatar, onUpdate }: AvatarCustomizerProps) {
 
   return (
     <div className="flex flex-col gap-6">
-      <AvatarBuilder avatar={avatar} />
-      
+      <AvatarBuilder
+        avatar={avatar}
+        className="rounded-full"
+      />
+
       <div className="grid grid-cols-3 gap-4">
         {categories.map((category) => (
           <Button
